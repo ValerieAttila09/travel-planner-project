@@ -1,5 +1,6 @@
 import { auth } from "@/auth"
 import { prisma } from "../prisma"
+import { redirect } from "next/navigation"
 
 export async function createTrip(formData: FormData) {
 
@@ -29,4 +30,6 @@ export async function createTrip(formData: FormData) {
       userId: session.user?.id
     }
   })
+
+  redirect("/trips")
 } 
