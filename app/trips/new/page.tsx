@@ -9,7 +9,7 @@ export default function NewTrip() {
 
 
   return (
-    <div className="max-w-lg mx-auto mt-10">
+    <div className="w-full max-w-lg mx-auto mt-10">
       <Card>
         <CardHeader>
           New Trip
