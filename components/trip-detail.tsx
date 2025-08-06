@@ -14,9 +14,9 @@ interface TripDetailClientProps {
 }
 
 export default function TripDetailClient({ trip }: TripDetailClientProps) {
-  
+
   const [activeTab, setActiveTab] = useState("overview")
-  
+
   return (
     <div className="container mx-auto px-4 py-8 space-y-8">
       {trip.imageUrl && (
@@ -37,7 +37,7 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
         </div>
         <div className="mt-4 md:mt-0">
           <Link href={`/trips/${trip.id}/itinerary/new`}>
-            <Button><Plus className="mr-1 h-5 w-5"/>Add Location</Button>
+            <Button><Plus className="mr-1 h-5 w-5" />Add Location</Button>
           </Link>
         </div>
       </div>
@@ -50,7 +50,28 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
             <TabsTrigger className="text-lg" value="map">Map</TabsTrigger>
           </TabsList>
 
-          <TabsContent value={""}></TabsContent>
+          <TabsContent value={"overview"} className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h2 className="text-2xl outfit-semibold mb-4">Trip Summary</h2>
+                <div className="space-y4">
+                  <div className="flex items-start">
+                    <Calendar className="h-6 w-6 mr-3 text-neutral-500" />
+                    <div className="">
+                      <p className="outft-medium text-neutral-700">Dates</p>
+                      <p className="text-sm text-neutral-500">
+                        {trip.startDate.toLocaleDateString()} - {trip.endDate.toLocaleDateString()} <br />
+                        {`${Math.round((trip.endDate.getTime() - trip.startDate.getTime())  / (1000 * 60 * 60 * 24) )} day(s)`}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </TabsContent>
         </Tabs>
       </div>
     </div>
